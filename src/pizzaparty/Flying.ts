@@ -37,8 +37,8 @@ let forwardVector: Vector3 = Vector3.Forward().rotate(Camera.instance.rotation) 
 let camera = Camera.instance
 
 export let hudDisplay = new UIText(ui.canvas)
-hudDisplay.value = "Hold W for forward\nMouse look to go up/down\nSHIFT + F to toggle fly mode\nDO NOT JUMP"
-hudDisplay.vAlign = "bottom"
+hudDisplay.value = "Hold W for forward\nMouse look to go up/down\nDO NOT JUMP"
+hudDisplay.vAlign = "top"
 hudDisplay.hTextAlign = "center"
 hudDisplay.fontSize = 15
 hudDisplay.visible = false
@@ -227,7 +227,6 @@ export function toggleFlyMode(){
   if(flyMode){
     time = Math.floor(Date.now()/1000)
     showDisplay()
-    ui.displayAnnouncement("Fly Mode")
     movePlayerTo({x: camera.position.x, y:camera.position.y + 1, z:camera.position.z})
     engine.addEntity(invisibleBox)
     invisibleBox.getComponent(Transform).position = new Vector3(camera.position.x, camera.position.y-1, camera.position.z)
@@ -246,6 +245,10 @@ export function showDisplay(){
   hudDisplay.visible = true
   pizza.visible = true
   pepp.visible = true
+
+  utils.setTimeout(1000* 15, ()=>{
+    hudDisplay.visible = false
+  })
   }
 
 export function hideDisplay(){
