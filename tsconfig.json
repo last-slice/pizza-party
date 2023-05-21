@@ -9,7 +9,7 @@
     "strictPropertyInitialization": false,
     "noImplicitAny": false,
     "noLib": false,
-    "ignoreDeprecations":"5.0",
+    "ignoreDeprecations": "5.0",
     "paths": {
       "@dcl/builder-hud": [
         "node_modules/@dcl/builder-hud/dist/index.d.ts"
@@ -37,6 +37,9 @@
       ],
       "dcl-neat": [
         "node_modules/dcl-neat/dist/index.d.ts"
+      ],
+      "dcl-video-system": [
+        "node_modules/dcl-video-system/dist/index.d.ts"
       ]
     },
     "baseUrl": "."

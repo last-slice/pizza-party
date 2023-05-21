@@ -27,10 +27,11 @@
     "@dcl/ecs-scene-utils": "^1.7.5",
     "@dcl/l2-scene-utils": "^2.0.0",
     "@dcl/ui-scene-utils": "^1.8.4",
-    "decentraland-transactions": "^1.42.0",
-    "eth-connect": "^6.1.0",
     "colyseus.js": "^0.14.13",
-    "dcl-neat": "^1.0.45"
+    "dcl-neat": "^1.0.45",
+    "dcl-video-system": "^1.1.9",
+    "decentraland-transactions": "^1.42.0",
+    "eth-connect": "^6.1.0"
   },
   "bundledDependencies": [
     "@dcl/builder-hud",
@@ -41,6 +42,7 @@
     "decentraland-transactions",
     "eth-connect",
     "colyseus.js",
-    "dcl-neat"
+    "dcl-neat",
+    "dcl-video-system"
   ]
 }

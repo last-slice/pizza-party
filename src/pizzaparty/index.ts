@@ -3,7 +3,7 @@ import resources from "./resources"
 import { hud } from "@dcl/builder-hud"
 import { KeepRotatingComponent } from "@dcl/ecs-scene-utils"
 import { addFlying } from "./Flying"
-
+import * as vs from 'dcl-video-system'
 
 export function createParty(){
 
@@ -12,6 +12,19 @@ export function createParty(){
     addObjects()
     addFlying()
 
+    let videoSystem = new vs.VideoSystem({
+        emission: 1.2,
+        type: vs.VideoSystemTypes.LIVE,
+        offType: vs.VideoSystemTypes.NONE,
+        liveLink: "https://tangisamazing.dclstream.com/live/obs/playlist.m3u8",
+     })
+
+     videoSystem.start(1)   
+     let ent = new Entity()
+    ent.addComponent(new PlaneShape())
+    ent.addComponent(videoSystem.material)
+    ent.addComponent(new Transform({position: new Vector3(8,0,8), rotation:Quaternion.Euler(0,0,90), scale: new Vector3(0,0,0)}))
+    engine.addEntity(ent)
 }
 
 function addFloor(){
@@ -19,8 +32,14 @@ function addFloor(){
     let lsgrounds:any = [
         new Vector3(8,0,8),
         new Vector3(24,0,8),
-        new Vector3(8,0,24),
-        new Vector3(24,0,24),
+        new Vector3(40,0,8),
+        new Vector3(56,0,8),
+        new Vector3(40,0,24),
+        new Vector3(24,0,-8),
+        new Vector3(24,0,-24),
+        new Vector3(40,0,-8),
+        new Vector3(40,0,-24),
+        
         ]
     
         for(var i = 0; i < lsgrounds.length; i++){
