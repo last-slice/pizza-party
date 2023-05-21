@@ -2,6 +2,7 @@ import { neat } from "dcl-neat"
 import resources from "./resources"
 import { hud } from "@dcl/builder-hud"
 import { KeepRotatingComponent } from "@dcl/ecs-scene-utils"
+import { addFlying } from "./Flying"
 
 
 export function createParty(){
@@ -9,6 +10,7 @@ export function createParty(){
     addFloor()
     addNeat()
     addObjects()
+    addFlying()
 
 }
 
