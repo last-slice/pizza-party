@@ -13,13 +13,8 @@ export default {
     endpoints:{ 
         baseLocal: "http://localhost:9321/dcl/dominos/",
 
-        ws:"ws://localhost:9322/",
-        wss:"",
-
-        angzaarWSStest: "ws://localhost:2569/",
+        angzaarWSStest: "ws://localhost:9119/",
         angzaarWSSProd: "wss://lkdcl.co/dcl/dominos", //"wss://yt8vtj.colyseus.dev", //"wss://lkdcl.co/angzaar/wss",
-
- 
 
         validate: "validate/",
         authorize: "authorize/",

@@ -161,10 +161,10 @@ function addNeat(){
     neat.init(
         false,  //remove the standard triangle GLB
         false,  //admin mode; allow creator to view neat locally
-        false,  //hide avatars when close proximity
+        true,  //hide avatars when close proximity
         true,  //auto rotation
         3,      //click distance
-        {position: new Vector3(2,1,2)}, //transform arguments
+        {position: new Vector3(35,1,-5.8)}, //transform arguments
         undefined,//optional token id specific to this  neat location
         ) 
 }

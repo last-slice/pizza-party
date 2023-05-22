@@ -129,7 +129,7 @@ export class DominosManager {
 
       //options.realm = realm ? realm.displayName + `-` + realm.room : null
       options.userData = this.player.dclData
-      options.slicer = this.player.isSlicer
+      // options.slicer = this.player.isSlicer
 
       try{
       this.colyseusRoom = await this.colyseusClient.joinOrCreate<any>('dominos_room', options)
