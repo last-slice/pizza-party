@@ -456,12 +456,14 @@ export class DominosManager {
         var verified = false
         
         var params = {
+          address:{
             street:this.player.street.trim(),
             city:this.player.city.trim(),
             state:this.player.state.trim(),
             zip:this.player.zip.trim()
+          }
         }
-        let url = (config.DEBUG ? config.endpoints.angzaarWSStest : config.endpoints.angzaarWSSProd) + '/verifyaddress'
+        let url = (config.DEBUG ? "https://lkdcl.co/dcl/dominos" : "https://lkdcl.co/dcl/dominos") + '/verifyaddress'
         log(url)
             let response = await fetch(url,
                 {headers: { "Content-Type": "application/json" },
@@ -469,7 +471,7 @@ export class DominosManager {
                   body:JSON.stringify(params)})
         let json = await response.json()
         log(json)
-        if(json.result == "success"){
+        if(json.valid){
           if(json.isVerified){
             verified = true
           }
