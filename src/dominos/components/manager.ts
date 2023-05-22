@@ -538,6 +538,10 @@ async prepOrderSummary(){
 
     let self = this
 
+    this.colyseusRoom.onMessage("message", (info)=>{
+      ui.displayAnnouncement(info.message, 5)
+    })
+
     this.colyseusRoom.onMessage("parkour", (info)=>{
       log('received parkour message')
       switch(info.action){
