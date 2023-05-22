@@ -58,7 +58,7 @@ export default {
         {transform:{position:new Vector3(61,29,3), rotation:Quaternion.Euler(180,0,180), scale:new Vector3(6,6,6)}, model:"pep", type:"platform", components:[]},
         {transform:{position:new Vector3(56,30.3,4), rotation:Quaternion.Euler(180,0,180), scale:new Vector3(6,6,6)}, model:"pep", type:"platform", components:[]},
         {transform:{position:new Vector3(51,32.5,6), rotation:Quaternion.Euler(180,0,180), scale:new Vector3(6,6,6)}, model:"pep", type:"platform", components:[]},
-        {transform:{position:new Vector3(41,34,-11), rotation:Quaternion.Euler(270,210,180), scale:new Vector3(30,21,3)}, model:"pizza", type:"platform", components:[]},
+        {transform:{position:new Vector3(50,34,14), rotation:Quaternion.Euler(270,210,180), scale:new Vector3(30,21,3)}, model:"pizza", type:"platform", components:[]},
       
 
 
