@@ -58,6 +58,19 @@ export async function addFlying(){
   engine.addEntity(ship)
   engine.addSystem(new PingSystem())
 
+
+  let shoe = new Entity()
+    shoe.addComponent(new Transform({position: new Vector3(35.8,36,-20)}))
+    shoe.addComponent(new utils.TriggerComponent(new utils.TriggerSphereShape(4,Vector3.Zero()),{
+      enableDebug: false,
+      onCameraEnter:()=>{
+        engine.removeEntity(shoe)
+        icon.visible = true
+        ui.displayAnnouncement("FLYING ENABLED!\nClick the rocket icon to begin.",10)
+      }
+    }))
+  engine.addEntity(shoe)
+
   pizza.sourceLeft = 0
   pizza.sourceTop = 0
   pizza.sourceWidth = 48
@@ -106,6 +119,7 @@ export async function addFlying(){
   icon.positionY = 0
   icon.width=40
   icon.height=40
+  icon.visible =false
   icon.isPointerBlocker = true
   icon.onClick = new OnPointerDown(() => {
     if(started){
@@ -134,7 +148,6 @@ export async function addFlying(){
      enableFlying()
     }
   })
-  icon.visible = true
 
   infoText.hAlign = 'center'
   infoText.vAlign = 'bottom'

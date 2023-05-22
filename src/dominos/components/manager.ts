@@ -312,22 +312,22 @@ export class DominosManager {
     }
 
     balanceCheck(){
-      //let acceptable = false
-      let acceptable = true
-      // switch(this.player.paymentType){
-      //   case 'pepe':
-      //     log('pepe balance check', +this.player.order.pepePrice, (this.player.balances.pepe / Math.pow(10,18)))
-      //     acceptable =  (this.player.balances.pepe / Math.pow(10,18)) >= this.player.order.pepePrice
-      //     break;
+      let acceptable = false
+     //let acceptable = true
+      switch(this.player.paymentType){
+        case 'pepe':
+          log('pepe balance check', +this.player.order.pepePrice, (this.player.balances.pepe / Math.pow(10,18)))
+          acceptable =  (this.player.balances.pepe / Math.pow(10,18)) >= this.player.order.pepePrice
+          break;
 
-      //   case '1mana':
-      //     acceptable =  parseInt(new ethConnect.BigNumber(ethConnect.fromWei(this.player.balances.mana, "ether")).toFormat(0)) >= this.player.order.manaPrice
-      //     break;
+        case '1mana':
+          acceptable =  parseInt(new ethConnect.BigNumber(ethConnect.fromWei(this.player.balances.mana, "ether")).toFormat(0)) >= this.player.order.manaPrice
+          break;
 
-      //   case '2mana':
-      //     acceptable = parseInt(new ethConnect.BigNumber(ethConnect.fromWei(this.player.balances.mana2, "ether")).toFormat(0)) >= this.player.order.manaPrice
-      //     break;
-      // }
+        case '2mana':
+          acceptable = parseInt(new ethConnect.BigNumber(ethConnect.fromWei(this.player.balances.mana2, "ether")).toFormat(0)) >= this.player.order.manaPrice
+          break;
+      }
       if (!acceptable){
         new ui.OkPrompt("Sorry, you do not have enough currency", undefined, undefined, true);
         return;
@@ -453,12 +453,15 @@ export class DominosManager {
     }
 
     async verifyAddress(){
-        var verified = true
-        /*
+        var verified = false
+        
         var params = {
-            address: fullAddress
+            street:this.player.street.trim(),
+            city:this.player.city.trim(),
+            state:this.player.state.trim(),
+            zip:this.player.zip.trim()
         }
-        let url = server + dominoserver +'verifyaddress'
+        let url = (config.DEBUG ? config.endpoints.angzaarWSStest : config.endpoints.angzaarWSSProd) + '/verifyaddress'
         log(url)
             let response = await fetch(url,
                 {headers: { "Content-Type": "application/json" },
@@ -471,7 +474,7 @@ export class DominosManager {
             verified = true
           }
         }
-        */
+        
         return verified
     }
 
@@ -649,6 +652,7 @@ async prepOrderSummary(){
           this.player.uuid = info.id
           this.player.virtualFee = info.fee
           this.player.paymentAddress = info.paymentAddress
+          this.player.isAmerican = info.isAmerican
 
           log('payment address is', this.player.paymentAddress)
           this.kiosk.buildKiosk()

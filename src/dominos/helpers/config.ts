@@ -1,6 +1,6 @@
 export default {
 
-    DEBUG: true,
+    DEBUG: false,
 
     paymentAddress: "",
 
