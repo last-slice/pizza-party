@@ -1,7 +1,7 @@
 import { neat } from "dcl-neat"
 import resources from "./resources"
 import { hud } from "@dcl/builder-hud"
-import { KeepRotatingComponent } from "@dcl/ecs-scene-utils"
+import { KeepRotatingComponent, ScaleTransformComponent } from "@dcl/ecs-scene-utils"
 import { addFlying } from "./Flying"
 import * as vs from 'dcl-video-system'
 
@@ -11,6 +11,7 @@ export function createParty(){
     addNeat()
     addObjects()
     addFlying()
+    addWinBox()
 
     let videoSystem = new vs.VideoSystem({
         emission: 1.2,
@@ -53,6 +54,33 @@ function addFloor(){
         }
 }
 
+
+function addWinBox(){
+    let transmaterial = new Material
+transmaterial.albedoColor = new Color4(0.5, 0, 0, 0)
+const winBox = new Entity()
+winBox.addComponent(new BoxShape())
+const transform1 = new Transform({
+  position: new Vector3(35.70,35,-20.96),
+  scale: new Vector3(1, 1, 1),
+  rotation: Quaternion.Euler(0, 210, 0)
+})
+winBox.addComponent(transform1)
+winBox.addComponent(
+  new OnPointerDown(() => {
+    // getInfoandSend();
+    // clickableImage.visible = true;
+
+  },
+  {
+    hoverText: 'Grab Za',
+    distance: 4
+  }
+  )
+)
+
+engine.addEntity(winBox)
+}
 function addNeat(){
     neat.init(
         false,  //remove the standard triangle GLB
@@ -70,6 +98,7 @@ function addObjects(){
         let entity = new Entity("entity-" + (i+1))
         entity.addComponent(resources.models[object.model])
         entity.addComponent(new Transform(object.transform))
+        let startSize = new Vector3 (6,6,6)
 
         switch(object.type){
             case 'decor':
@@ -89,10 +118,91 @@ function addObjects(){
                                         break;
                                 }
                                 break;
+                                case 'scaling':
+                                    switch(c.a){
+                                        case 'x':
+                                            entity.addComponent(new ScaleTransformComponent(startSize, new Vector3 (c.v,6,6),1, () => {
+                                                entity.addComponentOrReplace(new ScaleTransformComponent(new Vector3 (c.v,6,6),startSize,1))
+                                            }))
+                                            break;
+                                        case 'y':
+                                            entity.addComponent(new ScaleTransformComponent(startSize, new Vector3 (6,c.v,6),1, () => {
+                                                entity.addComponentOrReplace(new ScaleTransformComponent(new Vector3 (6,c.v,6),startSize,1))
+                                            }))
+                                            break;
+                                        case 'z':
+                                            entity.addComponent(new ScaleTransformComponent(startSize, new Vector3 (6,6,c.v),1, () => {
+                                                entity.addComponentOrReplace(new ScaleTransformComponent(new Vector3 (6,6,c.v),startSize,1))
+                                            }))
+                                            break;
+                                    }
+                                    break;
+                                    case 'moving':
+                                        switch(c.a){
+                                            case 'x':
+                                                // entity.addComponent(new ScaleTransformComponent(startSize, new Vector3 (c.v,6,6),1))
+                                                break;
+                                            case 'y':
+                                                // entity.addComponent(new ScaleTransformComponent(startSize, new Vector3 (1,c.v,1),1))
+                                                break;
+                                            case 'z':
+                                                // entity.addComponent(new ScaleTransformComponent(startSize, new Vector3 (1,1,c.v),1))
+                                                break;
+                                        }
+                                        break;
+                                        
                         }
                     })
                 }
                 break;
+                case 'platform':
+                    if(object.components && object.components.length > 0){
+                        object.components.forEach((c)=>{
+                            switch(c.t){
+                                case 'rotating':
+                                    switch(c.a){
+                                        case 'x':
+                                            entity.addComponent(new KeepRotatingComponent(Quaternion.Euler(c.v,0,0)))
+                                            break;
+                                        case 'y':
+                                            entity.addComponent(new KeepRotatingComponent(Quaternion.Euler(0,c.v,0)))
+                                            break;
+                                        case 'z':
+                                            entity.addComponent(new KeepRotatingComponent(Quaternion.Euler(0,0,c.v)))
+                                            break;
+                                    }
+                                    break;
+                                    case 'scaling':
+                                        switch(c.a){
+                                            case 'x':
+                                                entity.addComponent(new ScaleTransformComponent(startSize, new Vector3 (c.v,1,1),1))
+                                                break;
+                                            case 'y':
+                                                entity.addComponent(new ScaleTransformComponent(startSize, new Vector3 (1,c.v,1),1))
+                                                break;
+                                            case 'z':
+                                                entity.addComponent(new ScaleTransformComponent(startSize, new Vector3 (1,1,c.v),1))
+                                                break;
+                                        }
+                                        break;
+                                        case 'moving':
+                                            switch(c.a){
+                                                case 'x':
+                                                    entity.addComponent(new ScaleTransformComponent(startSize, new Vector3 (c.v,1,1),1))
+                                                    break;
+                                                case 'y':
+                                                    entity.addComponent(new ScaleTransformComponent(startSize, new Vector3 (1,c.v,1),1))
+                                                    break;
+                                                case 'z':
+                                                    entity.addComponent(new ScaleTransformComponent(startSize, new Vector3 (1,1,c.v),1))
+                                                    break;
+                                            }
+                                            break;
+                                            
+                            }
+                        })
+                    }
+                    break;
         }
 
         engine.addEntity(entity)
