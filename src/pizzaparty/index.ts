@@ -34,7 +34,7 @@ export function createParty(){
     box.getComponent(TextShape).outlineWidth = .2
     box.getComponent(TextShape).outlineColor = Color3.Red()
     box.getComponent(TextShape).font = new Font(Fonts.SansSerif_Bold)
-    box.addComponent(new Transform({position: new Vector3(37.6,35,-24), rotation:Quaternion.Euler(0,180,0)}))
+    box.addComponent(new Transform({position: new Vector3(39,35,4), rotation:Quaternion.Euler(0,230,0)}))
     engine.addEntity(box)
     box.addComponent(hud.transparentMat)
     box.addComponent(new OnPointerDown(()=>{
@@ -51,7 +51,7 @@ export function createParty(){
 
     let mask = new Entity()
     mask.addComponent(new GLTFShape("models/mask.glb"))
-    mask.addComponent(new Transform({position: new Vector3(37.6,34,-24)}))
+    mask.addComponent(new Transform({position: new Vector3(39,34,4)}))
     mask.addComponent(new KeepRotatingComponent(Quaternion.Euler(0,45,0)))
     engine.addEntity(mask)
 
@@ -64,7 +64,7 @@ export function createParty(){
     shoes.getComponent(TextShape).color = Color3.White()
     shoes.getComponent(TextShape).outlineWidth = .2
     shoes.getComponent(TextShape).outlineColor = Color3.Red()
-    shoes.addComponent(new Transform({position: new Vector3(31,35,-21), rotation:Quaternion.Euler(0,220,0)}))
+    shoes.addComponent(new Transform({position: new Vector3(47,35,0), rotation:Quaternion.Euler(0,200,0)}))
     engine.addEntity(shoes)
     shoes.addComponent(new OnPointerDown(()=>{
         log('sending message')
@@ -79,27 +79,27 @@ export function createParty(){
 
     let shoe = new Entity()
     shoe.addComponent(new GLTFShape("models/shoes.glb"))
-    shoe.addComponent(new Transform({position: new Vector3(31,35.5,-21)}))
+    shoe.addComponent(new Transform({position: new Vector3(47,35.5,0)}))
     shoe.addComponent(new KeepRotatingComponent(Quaternion.Euler(0,-45,0)))
     engine.addEntity(shoe)
 
 
     let maex = EXTRAS.createExtra(
-        {position: new Vector3(36.37,34.1,-24.32), rotation:Quaternion.Euler(0,0,0)}, 
+        {position: new Vector3(45,34.1,1), rotation:Quaternion.Euler(0,0,0)}, 
         EXTRAS.EXTRA_BODY_TYPE.MALE, 
         "Pizza Mask",
         ["urn:decentraland:matic:collections-v2:0xe7cdc8ba8f437954a60bacaccefc0766a5e27af9:0", "urn:decentraland:matic:collections-v2:0xe7cdc8ba8f437954a60bacaccefc0766a5e27af9:2", "urn:decentraland:matic:collections-v2:0x27569b3e23229d63efa262e852b3b09085b5e48a:0"],
     )
 
    let shex = EXTRAS.createExtra(
-        {position: new Vector3(32.15,34.1,-21.93), rotation:Quaternion.Euler(0,45,0)}, 
+        {position: new Vector3(43,34.1,2), rotation:Quaternion.Euler(0,45,0)}, 
         EXTRAS.EXTRA_BODY_TYPE.MALE, 
         "Pizza Shoes",
         ["urn:decentraland:matic:collections-v2:0xe7cdc8ba8f437954a60bacaccefc0766a5e27af9:0", "urn:decentraland:matic:collections-v2:0xe7cdc8ba8f437954a60bacaccefc0766a5e27af9:2", "urn:decentraland:matic:collections-v2:0xe7cdc8ba8f437954a60bacaccefc0766a5e27af9:1"],
     )
 
     let ex = EXTRAS.createExtra(
-        {position: new Vector3(34.5,34.1,-22.2), rotation:Quaternion.Euler(0,45,0)}, 
+        {position: new Vector3(41,34.1,3), rotation:Quaternion.Euler(0,45,0)}, 
         EXTRAS.EXTRA_BODY_TYPE.MALE, 
         "Last Slice",
         ["urn:decentraland:matic:collections-v2:0xf87a8372437c40ef9176c1b224cbe9307a617a25:0", "urn:decentraland:matic:collections-v2:0xf87a8372437c40ef9176c1b224cbe9307a617a25:1", "urn:decentraland:matic:collections-v2:0xf87a8372437c40ef9176c1b224cbe9307a617a25:2"],
