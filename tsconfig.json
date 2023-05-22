@@ -40,6 +40,9 @@
       ],
       "dcl-video-system": [
         "node_modules/dcl-video-system/dist/index.d.ts"
+      ],
+      "dcl-scene-extras": [
+        "node_modules/dcl-scene-extras/dist/index.d.ts"
       ]
     },
     "baseUrl": "."

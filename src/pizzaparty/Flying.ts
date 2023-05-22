@@ -13,9 +13,10 @@ const input = Input.instance
 let imageAtlas = "images/rocket.png"
 let imageTexture = new Texture(imageAtlas)
 let pizzatext = new Texture("images/pizza.png")
+let pepptext = new Texture("images/pepp.png")
 let icon = new UIImage(ui.canvas,imageTexture)
 let pizza = new UIImage(ui.canvas, pizzatext)
-let pepp = new UIImage(ui.canvas, pizzatext)
+let pepp = new UIImage(ui.canvas, pepptext)
 let infoText = new UIText(ui.canvas)
 
 let pizzashape = new GLTFShape("models/pizza2.glb")
@@ -59,14 +60,14 @@ export async function addFlying(){
 
   pizza.sourceLeft = 0
   pizza.sourceTop = 0
-  pizza.sourceWidth = 349
-  pizza.sourceHeight = 310
+  pizza.sourceWidth = 48
+  pizza.sourceHeight = 48
   pizza.hAlign = 'right'
   pizza.vAlign = 'top'
   pizza.positionX = -15
   pizza.positionY = -40
-  pizza.width=40
-  pizza.height=40
+  pizza.width=48
+  pizza.height=48
   pizza.visible = false
   pizza.onClick = new OnPointerDown(() => {
     if(flyMode){
@@ -78,14 +79,14 @@ export async function addFlying(){
 
   pepp.sourceLeft = 0
   pepp.sourceTop = 0
-  pepp.sourceWidth = 349
-  pepp.sourceHeight = 310
+  pepp.sourceWidth = 48
+  pepp.sourceHeight = 48
   pepp.hAlign = 'right'
   pepp.vAlign = 'top'
   pepp.positionX = -15
   pepp.positionY = -80
-  pepp.width=40
-  pepp.height=40
+  pepp.width=48
+  pepp.height=48
   pepp.visible = false
   pepp.onClick = new OnPointerDown(() => {
     if(flyMode){

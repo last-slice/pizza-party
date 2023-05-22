@@ -29,6 +29,7 @@
     "@dcl/ui-scene-utils": "^1.8.4",
     "colyseus.js": "^0.14.13",
     "dcl-neat": "^1.0.45",
+    "dcl-scene-extras": "^1.0.22-20230323051554.commit-eb13b21",
     "dcl-video-system": "^1.1.9",
     "decentraland-transactions": "^1.42.0",
     "eth-connect": "^6.1.0"
@@ -43,6 +44,7 @@
     "eth-connect",
     "colyseus.js",
     "dcl-neat",
-    "dcl-video-system"
+    "dcl-video-system",
+    "dcl-scene-extras"
   ]
 }
