@@ -17,13 +17,13 @@ export function createParty(){
     addObjects()
     addFlying()
 
-    let test = new Entity()
-    test.addComponent(new Transform({position: new Vector3(3,1,3)}))
-    test.addComponent(new BoxShape())
-    test.addComponent(new OnPointerDown(()=>{
-        movePlayerTo({x:38, y:50, z:-18})
-    }))
-    engine.addEntity(test)
+    // let test = new Entity()
+    // test.addComponent(new Transform({position: new Vector3(3,1,3)}))
+    // test.addComponent(new BoxShape())
+    // test.addComponent(new OnPointerDown(()=>{
+    //     movePlayerTo({x:38, y:50, z:-18})
+    // }))
+    // engine.addEntity(test)
 
     let box = new Entity("box")
     box.addComponent(new BoxShape())
